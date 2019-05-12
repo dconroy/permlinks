@@ -1,74 +1,77 @@
-
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Jekyll v3.8.5">
-  
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <title>Link Fixer</title>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="Dave Conroy">
+  <!-- Bootstrap CSS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link href="css/cover.css" rel="stylesheet">
 
+  <title>URL Builder</title>
 
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
       }
+    }
+  </style>
+  <!-- Custom styles for this template -->
 
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
-    <!-- Custom styles for this template -->
-    <link href="cover.css" rel="stylesheet">
-  </head>
-  <body class="text-center">
-    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-  <header class="masthead mb-auto">
-    <div class="inner">
-      <h3 class="masthead-brand">Link Tool</h3>
-      
-    </div>
-  </header>
+</head>
 
-  <main role="main" class="inner cover">
-    <form>
-      <div class="form-group">
-        <label for="inputEbscoLabel">Enter Ebsco Link</label>
-        <input type="text" class="form-control" oninput="fixLink()" id="inputEbsco" placeholder="Enter Ebsco Link">
-       </div>
-      <div class="form-group">
-        <label for="exampleInputPassword1">Permalink</label>
-        <input type="text" class="form-control" id="fixedLink" placeholder="Working Link">
+<body class="text-center">
+  <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <header class="masthead mb-auto">
+      <div class="inner">
+        <h3 class="masthead-brand">URL Builder</h3>
+
       </div>
-      <button type="button" class="btn btn-primary" onclick="fixLink()">Add to Clipboard</button>
-    </form>
-    </p>
-  </main>
+    </header>
 
-  <footer class="mastfoot mt-auto">
-    <div class="inner">
+    <main role="main" class="inner cover">
+      <form>
+        <div class="form-group">
+          <label for="inputEbscoLabel">Enter Link</label>
+          <input type="text" class="form-control" oninput="fixLink()" id="inputEbsco" placeholder="Paste Ebsco Link">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Permalink</label>
+          <input type="text" readonly class="form-control" id="newLink" placeholder="Working Link">
+        </div>
+        <button type="button" class="btn btn-primary" onclick="copyClipboard()" id=copyButton>Add to Clipboard</button>
+        <br><br>
+        <button type="button" class="btn btn-link" onclick="visitSite()" style="visibility: hidden"  id=visitSiteBtn>Visit Site</button>
+      </form>
+      </p>
+    </main>
+    <div class="alert alert-warning fade show" role="alert" id=alertText style="visibility: hidden">
+      Copied!
+      <button type="button" class="close" onclick="hideAlert()" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button></div>
+
+    <footer class="mastfoot mt-auto">
+      <div class="inner">
       </div>
-  </footer>
-</div>
+    </footer>
+  </div>
 
-<script>
-  function fixLink() {
-    var x = document.getElementById("inputEbsco").value;
-    console.log(x);
-    document.getElementById("fixedLink").value = x;
-  }
-  </script>
-  
+  <script src="js/utilities.js"></script>
+  <script src="js/bootstrap.min.js"></script>
 </body>
+
 </html>
